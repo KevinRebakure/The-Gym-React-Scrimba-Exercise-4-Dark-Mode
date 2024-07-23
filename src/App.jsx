@@ -1,15 +1,12 @@
 import { useState } from "react";
+import WindowTracker from "./WindowTracker";
 
 export default function App() {
-  const [size, setSize] = useState(window.innerWidth);
   const [show, setShow] = useState(true);
-
-  window.addEventListener("resize", function () {
-    setSize(this.window.innerWidth);
-  });
 
   function handleClick() {
     setShow((prev) => !prev);
+    console.log(`The state is: ${show}`);
   }
 
   return (
@@ -21,11 +18,7 @@ export default function App() {
         >
           Toggle WindowTracker
         </button>
-        {show && (
-          <p className="text-4xl font-semibold text-white">
-            Window width: {size}
-          </p>
-        )}
+        {show && <WindowTracker />}
       </div>
     </>
   );
